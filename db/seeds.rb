@@ -44,7 +44,7 @@ puts "making users"
       photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..4)}.jpg"),
       address: user.address,
       price: [5, 10, 25, 50].sample,
-      animal_type: %w(dog cat sheep unicorn snake lion monkey giraffe)
+      animal_type: %w(dog cat sheep unicorn snake lion monkey giraffe).sample
     )
   end
 end
