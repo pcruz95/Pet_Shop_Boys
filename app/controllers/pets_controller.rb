@@ -1,6 +1,5 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update]
-  before_action :set_user, except: [:index]
 
   def index
     @pets = Pet.all
@@ -11,13 +10,14 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    @user = current_user
   end
 
   def create
     @pet = Pet.new(pet_params)
-    @pet.user = @user
+    @pet.user = current_user
     if @pet.save
-      redirect_to pets_show_path(@pet)
+      redirect_to pet_path(@pet)
     else
       render :new
     end
@@ -29,17 +29,13 @@ class PetsController < ApplicationController
   def update
     @pet.update(pet_params)
 
-    redirect_to pets_show_path(@pet)
+    redirect_to pet_path(@pet)
   end
 
   private
 
   def set_pet
     @pet = Pet.find(params[:id])
-  end
-
-  def set_user
-    @user = User.find(params[:user_id])
   end
 
   def pet_params
