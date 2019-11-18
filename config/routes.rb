@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
-  get 'pets/index'
-  get 'pets/show'
-  get 'pets/new'
-  get 'pets/create'
-  get 'pets/edit'
-  get 'pets/update'
-  devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  resources :pets, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :bookings, only: [:show, :new, :create, :destroy]
+  end
+  # get 'bookings/show'
+  # get 'bookings/new'
+  # get 'bookings/create'
+  # get 'bookings/destroy'
+  # get 'pets/index'
+  # get 'pets/show'
+  # get 'pets/new'
+  # get 'pets/create'
+  # get 'pets/edit'
+  # get 'pets/update'
 end
