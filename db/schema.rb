@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2019_11_18_141246) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "address"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "address", null: false
     t.string "description"
     t.string "photo"
     t.string "email", default: "", null: false
