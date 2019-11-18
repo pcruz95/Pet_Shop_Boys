@@ -2,24 +2,27 @@ puts "destroying bookings"
 Booking.destroy_all
 
 puts "destroying pets"
-Pets.destroy_all
+Pet.destroy_all
 
 puts "destroying users"
 User.destroy_all
 
-puts "puts making users"
+i = 0
+
+puts "making users"
 20.times do
   puts "making a user"
-  user = User.new(
-          first_name: Faker::Name.first_name,
-          last_name: Faker::Name.last_name,
-          address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
-          description: Faker::Lorem.sentence(word_count: rand(10..40)),
-          photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..4)}.jpg")
-        )
-  user.email = Faker::Internet.email,
-  user.encrypted_password = 'pwdpwd'
-  user.save!
+  i += 1
+  puts "email: #{i}@gmail.com, pwd: pwdpwd"
+  user = User.create(
+    email: "#{i}@gmail.com",
+    password: 'pwdpwd',
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
+    description: Faker::Lorem.sentence(word_count: rand(10..40)),
+    photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..4)}.jpg")
+  )
   [0, 0, 0, 1, 2].sample.times do
     puts "making pet"
     pet = Pet.create(
@@ -35,49 +38,21 @@ puts "puts making users"
 end
 
 puts "creating bookings"
+
+pets = Pet.all
+users = User.all
+
+date1 = Time.now
+date2 = Time.now + (60 * 60 * 24 * 31)
+
 30.times do
+  puts "creating a booking"
+  random_start_date = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
+  random_end_date = random_start_date + (60 * 60 * 24 * rand(1..10))
   booking = Booking.create(
-
-            )
+    user: users.sample,
+    pet: pets.sample,
+    start_date: random_start_date.to_date,
+    end_date: random_end_date.to_date
+  )
 end
-
-# create_table "bookings", force: :cascade do |t|
-#   t.bigint "user_id"
-#   t.bigint "pet_id"
-#   t.date "start_date", null: false
-#   t.date "end_date", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["pet_id"], name: "index_bookings_on_pet_id"
-#   t.index ["user_id"], name: "index_bookings_on_user_id"
-
-
-
-# create_table "pets", force: :cascade do |t|
-#   t.bigint "user_id"
-#   t.string "name", null: false
-#   t.string "description"
-#   t.string "photo"
-#   t.string "address"
-#   t.integer "price"
-#   t.string "animal_type"
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["user_id"], name: "index_pets_on_user_id"
-
-
-  # create_table "users", force: :cascade do |t|
-  #   t.string "first_name"
-  #   t.string "last_name"
-  #   t.string "address"
-  #   t.string "description"
-  #   t.string "photo"
-  #   t.string "email", default: "", null: false
-  #   t.string "encrypted_password", default: "", null: false
-  #   t.string "reset_password_token"
-  #   t.datetime "reset_password_sent_at"
-  #   t.datetime "remember_created_at"
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  #   t.index ["email"], name: "index_users_on_email", unique: true
-  #   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
