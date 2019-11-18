@@ -7,6 +7,18 @@ Pet.destroy_all
 puts "destroying users"
 User.destroy_all
 
+
+addresses = [
+  "Av. da República 46, 1050-195 Lisboa",
+  "R. Duque de Palmela 34, 1250-098 Lisboa",
+  "Calçada do Desterro 22, 1150-126 Lisboa",
+  "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
+  "R. Barata Salgueiro 53, 1250-043 Lisboa",
+  "R. Júlio César Machado 9, 1250-042 Lisboa",
+  "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
+  "Av. Alm. Reis 35, 1150-018 Lisboa"
+]
+
 i = 0
 
 puts "making users"
@@ -19,7 +31,7 @@ puts "making users"
     password: 'pwdpwd',
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
+    address: addresses.sample,
     description: Faker::Lorem.sentence(word_count: rand(10..40)),
     photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..4)}.jpg")
   )
