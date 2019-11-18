@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :pets
   has_many :bookings
+
+  mount_uploader :photo, PhotoUploader
 end
