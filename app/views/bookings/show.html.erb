@@ -1,23 +1,24 @@
-<div class="container">
+<div class="container d-inline-flex justify-content-between align-items-center my-3">
   <div class="user-avatar">
-</div>
+    <%= cl_image_tag current_user.photo, height: 250, width: 250, crop: :fill%>
+  </div>
 
-  <div class="icon">
+  <div class="icon" style="font-size: 2.5rem;">
     <i class="fas fa-plus-circle"></i>
   </div>
 
   <div class="pet-avatar">
-    <%= cl_image_tag @pet.photo%>
+    <%= cl_image_tag @pet.photo, height: 250, width: 250, crop: :fill%>
   </div>
 </div>
 
-<div class="container">
+<div class="container justify-content-center">
   <h1>It's a DATE!</h1>
 
   <div class="booking-info">
-    <p class="label">Pet's name</p>
-    <p class="input"><%= @pet.name %></p>
-    <p class="label">Dates</p>
+    <p class="label">Pet's name: </p>
+    <p class="input"><%= @pet.name.capitalize %></p>
+    <p class="label">Dates:</p>
     <p class="input"><%= @booking.start_date %> - <%= @booking.end_date %></p>
     <p class="label">Location</p>
     <p class="input"><%= @pet.address %></p>
