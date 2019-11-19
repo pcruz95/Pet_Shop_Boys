@@ -1,0 +1,14 @@
+<div class="d-flex">
+  <div class="user_show_big_img d-inline-block" style="background-image: url(<%= cl_image_path @user.photo %>);" ></div>
+
+  <div class="flex-grow-1 px-3">
+    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <%= link_to "Edit your details", edit_user_path(@user) %>
+    <h5>Description</h5>
+    <p><%= @user.description %></p>
+    <h5>Address</h5>
+    <p><%= @user.address %></p>
+    <h5>Email</h5>
+    <p><%= @user.email %></p>
+  </div>
+</div>

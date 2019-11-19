@@ -1,0 +1,37 @@
+<h3>Bookings you've made</h3>
+
+<% if @user.bookings.count < 1 %>
+  <p>You have not made any bookings!</p>
+<% end %>
+
+<%= link_to "+ View Pets & Make a Booking", pets_path, class: 'btn btn-primary mb-3' %>
+
+<% if @user.bookings.count > 0 %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Pet Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @user.bookings.each do |booking| %>
+
+        <tr>
+          <td><%= booking.pet.name %></td>
+          <td><%= booking.start_date %></td>
+          <td><%= booking.end_date %></td>
+          <td><%= link_to "More info...", pet_booking_path(booking.pet, booking) %></td>
+        </tr>
+
+      <% end %>
+      <%#= render 'components/new_dose_dropdown' %>
+
+    </tbody>
+  </table>
+
+<% end %>
