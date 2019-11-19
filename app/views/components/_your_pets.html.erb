@@ -25,6 +25,10 @@
           <!-- photo not being uploaded  -->
           <%= link_to "Go to #{pet.name}'s page", pet_path(pet), class: 'btn btn-secondary mb-3' %>
 
+          <% if pet.bookings.count < 1 %>
+            <p>This pet has no bookings!</p>
+          <% else %>
+
           <table class="table">
             <thead>
               <tr>
@@ -49,6 +53,8 @@
 
             </tbody>
           </table>
+
+          <% end %>
 
         </div>
       </div>
