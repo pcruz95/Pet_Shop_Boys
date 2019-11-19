@@ -1,4 +1,4 @@
-<div class="container d-inline-flex justify-content-between align-items-center my-3">
+<div class="container d-inline-flex justify-content-around align-items-center my-3">
   <div class="user-avatar">
     <%= cl_image_tag current_user.photo, height: 250, width: 250, crop: :fill%>
   </div>
@@ -26,3 +26,6 @@
     <p class="input"><%= @pet.price %></p>
   </div>
 </div>
+
+
+<%= link_to 'Delete this booking', pet_booking_path(@pet, @booking), method: :delete, data: { confirm: "Are you sure?" } %>
