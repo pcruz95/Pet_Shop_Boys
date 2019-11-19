@@ -4,6 +4,7 @@ class BookingsController < ApplicationController
   before_action :authorize_booking, except: [:index, :new, :create]
 
   def show
+    @review = Review.new
   end
 
   def new

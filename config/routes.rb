@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   resources :pets, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :bookings, only: [:show, :new, :create, :destroy]
   end
+  resources :bookings do
+    resources :reviews, only: [:create]
+  end
+
   # get 'bookings/show'
   # get 'bookings/new'
   # get 'bookings/create'

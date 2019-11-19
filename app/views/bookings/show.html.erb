@@ -27,5 +27,17 @@
   </div>
 </div>
 
+<h3>Review this pet:</h3>
+
+<%= simple_form_for [@booking, @review] do |f| %>
+  <%= f.input :rating, collection: (0..5) %>
+  <%= f.input :content %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+
+
+
+
 
 <%= link_to 'Delete this booking', pet_booking_path(@pet, @booking), method: :delete, data: { confirm: "Are you sure?" } %>
