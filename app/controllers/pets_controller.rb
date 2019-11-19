@@ -6,14 +6,14 @@ class PetsController < ApplicationController
     @pets = policy_scope(Pet)
     authorize @pets
 
-    @flats = Flat.geocoded #returns flats with coordinates
+    # @flats = Flat.geocoded #returns flats with coordinates
 
-    @markers = @flats.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude
-      }
-    end
+    # @markers = @flats.map do |flat|
+    #   {
+    #     lat: flat.latitude,
+    #     lng: flat.longitude
+    #   }
+    # end
   end
 
   def show
