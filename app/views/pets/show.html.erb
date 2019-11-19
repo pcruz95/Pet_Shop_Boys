@@ -2,8 +2,8 @@
   <h1 class="display-4">Pet's name</h1>
   <p class="lead">Pet description</p>
   <hr class="my-4">
-  <p>Book the pet</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Book this pet</a>
+
+  <%= link_to 'Book this pet', new_pet_booking_path(@pet) %>
 </div>
 
 <% if policy(@pet).edit? %>
