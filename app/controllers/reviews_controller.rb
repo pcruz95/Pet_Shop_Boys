@@ -31,11 +31,7 @@ class ReviewsController < ApplicationController
   def destoy
     @review.destroy
 
-<<<<<<< HEAD
     redirect_to reviews_path
-=======
-    redirect_to pets_path
->>>>>>> ddc1e71211aec0ca1f891bc250df2b5b298f9e4f
   end
 
   private
