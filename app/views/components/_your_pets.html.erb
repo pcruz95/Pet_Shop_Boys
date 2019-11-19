@@ -1,0 +1,60 @@
+<h3>Your pets & their bookings</h3>
+
+<% if @user.pets.count < 1 %>
+  <p>You do not have any pets!</p>
+<% end %>
+
+<%= link_to "+ Add a Pet", new_pet_path, class: 'btn btn-primary mb-3' %>
+
+<% if @user.pets.count > 0 %>
+  <div id="accordion">
+
+    <% @user.pets.each_with_index do |pet, i| %>
+
+    <div class="card">
+      <div class="card-header d-flex" id="heading<%= i %>">
+        <div class="pets_acc_img d-inline-block align-self-center" style="background-image: url(<%= cl_image_path pet.photo %>);" ></div>
+        <h5 class="mb-0 d-inline-block align-self-center">
+          <button class="btn btn-link text-left" data-toggle="collapse" data-target="#collapse<%= i %>" aria-expanded="true" aria-controls="collapse<%= i %>">
+            <span class="d-inline-block"><%= pet.name %>&nbsp</span><span class="d-inline-block">(<%= pet.bookings.count %> bookings)</span>
+          </button>
+        </h5>
+      </div>
+      <div id="collapse<%= i %>" class="collapse collapsed" aria-labelledby="heading<%= i %>" data-parent="#accordion">
+        <div class="card-body">
+          <!-- photo not being uploaded  -->
+          <%= link_to "Go to #{pet.name}'s page", pet_path(pet), class: 'btn btn-secondary mb-3' %>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% pet.bookings.each do |booking| %>
+
+                <tr>
+                  <td><%= booking.start_date %></td>
+                  <td><%= booking.end_date %></td>
+                  <td><%= link_to "More info...", pet_booking_path(booking.pet, booking) %></td>
+                </tr>
+
+              <% end %>
+
+              <%#= render 'components/new_dose_dropdown' %>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+
+  </div>
+<% end %>
