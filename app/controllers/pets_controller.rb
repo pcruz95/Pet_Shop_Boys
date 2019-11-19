@@ -1,6 +1,6 @@
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_pet, except: [:index]
+  before_action :authorize_pet, except: [:index, :new, :create]
 
   def index
     @pets = policy_scope(Pet)
@@ -12,12 +12,14 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    authorize_pet
     @user = current_user
   end
 
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
+    authorize_pet
     if @pet.save
       redirect_to pet_path(@pet)
     else

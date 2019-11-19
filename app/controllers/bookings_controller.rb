@@ -1,13 +1,14 @@
 class BookingsController < ApplicationController
   before_action :set_pet
   before_action :set_booking, only: [:show, :destroy]
-  before_action :authorize_booking, except: [:index]
+  before_action :authorize_booking, except: [:index, :new, :create]
 
   def show
   end
 
   def new
     @booking = Booking.new
+    authorize_booking
   end
 
   def create
@@ -15,11 +16,18 @@ class BookingsController < ApplicationController
 
     @booking.pet = @pet
     @booking.user = current_user
-    @booking.save
+    authorize_booking
+    if @booking.save
+      redirect_to pet_booking_path(@pet, @booking)
+    else
+      render :new
+    end
   end
 
   def destroy
     @booking.destroy
+
+    redirect_to pets_path
   end
 
   private
