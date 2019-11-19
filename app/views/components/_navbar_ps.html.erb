@@ -4,7 +4,9 @@
   <div class="current_user-info d-inline-flex align-items-center px-3">
     <% if current_user.present? %>
       <p class="px-2"><%= current_user.first_name %></p>
-      <%= cl_image_tag current_user.photo, class: "avatar" %>
+      <%= link_to user_path(current_user) do %>
+        <%= cl_image_tag current_user.photo, class: "avatar" %>
+      <% end %>
     <% end %>
   </div>
 
