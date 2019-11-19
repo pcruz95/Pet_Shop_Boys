@@ -8,12 +8,12 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @user = current_user
   end
-  # TO BE COMPLETED #
+
   def create
     @review = Review.new(review_params)
     @review.user = current_user
     if @review.save
-      # redirect_to ??
+      redirect_to pet_path(@pet)
     else
       render :new
     end
@@ -21,17 +21,17 @@ class ReviewsController < ApplicationController
 
   def edit
   end
-  # TO BE COMPLETED #
+
   def update
     @review.update(review_params)
 
-    # redirect_to ??
+    redirect_to pet_path(@pet)
   end
-  # TO BE COMPLETED #
+
   def destoy
     @review.destroy
 
-    #redirect_to ??
+    redirect_to pets_path
   end
 
   private
