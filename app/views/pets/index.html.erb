@@ -1,25 +1,25 @@
-
 <% if policy(Pet).create? %>
   <%= link_to "+ New Pet", new_pet_path %>
 <% end %>
 
-
 <div class="container">
   <div class="row justify-content-center">
-  <%= 12.times do %>
+    <% @pets.each do |pet| %>
     <div class="col-sm-12 col-md-6 col-lg-4">
-      <div class="d-flex align-items-center m-3">
-        <!-- <div class="card" style="width: 18rem;"> -->
-        <div class="card">
-          <img src="..." class="card-img-top" alt="...">
+      <div class="d-flex align-items-center m-1">
+        <div class="card" id="pet_card" style="width: 18rem;">
+          <%= cl_image_tag pet.photo, class: "card-picture"  %>
           <div class="card-body">
-            <h5 class="card-title">Pet's name</h5>
-            <p class="card-text">Pet's description.</p>
-            <a href="#" class="btn btn-primary">Book now!</a>
+            <div class="card-title" id="pet_card_title">
+              <h5><%= pet.name %></h5>
+              <p><%= pet.price %>€</p>
+            </div>
+            <h6><%= pet.address %></h6>
+            <%= link_to 'Pet Details', pet_path(pet), class: "btn btn-primary" %>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
