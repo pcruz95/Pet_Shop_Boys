@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_pet
   before_action :set_booking, only: [:show, :destroy]
+  before_action :authorize_booking, except: [:index]
 
   def show
   end
@@ -22,6 +23,10 @@ class BookingsController < ApplicationController
   end
 
   private
+
+  def authorize_booking
+    authorize @booking
+  end
 
   def set_pet
     @pet = Pet.find(params[:pet_id])

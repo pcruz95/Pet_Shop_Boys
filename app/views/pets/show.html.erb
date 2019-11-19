@@ -5,3 +5,11 @@
   <p>Book the pet</p>
   <a class="btn btn-primary btn-lg" href="#" role="button">Book this pet</a>
 </div>
+
+<% if policy(@pet).edit? %>
+  <%= link_to 'Edit Your Pet', edit_pet_path(@pet) %>
+<% end %>
+
+<% if policy(@pet).destroy? %>
+  <%= link_to 'KILL Your Pet', pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

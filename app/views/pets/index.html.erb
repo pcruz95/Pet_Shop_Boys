@@ -1,3 +1,9 @@
+
+<% if policy(Pet).create? %>
+  <%= link_to "+ New Pet", new_pet_path %>
+<% end %>
+
+
 <div class="container">
   <div class="row justify-content-center">
   <%= 12.times do %>
@@ -16,4 +22,9 @@
     </div>
   <% end %>
   </div>
+</div>
+
+
+<div>
+  <h1>bla</h1>
 </div>
