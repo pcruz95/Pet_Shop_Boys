@@ -38,7 +38,7 @@ class PetsController < ApplicationController
     @pet.destroy
 
     # show page for user
-    redirect_to reviews_path
+    redirect_to pets_path
   end
 
   private
