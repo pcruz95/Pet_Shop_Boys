@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @user = current_user
+
+    redirect_to pet_path(@pet)
   end
 
   def create
@@ -20,6 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    redirect_to pet_path(@pet)
   end
 
   def update
