@@ -1,3 +1,27 @@
-<h1>Bookings#show</h1>
-<p>Find me in app/views/bookings/show.html.erb</p>
-e
+<div class="container">
+  <div class="user-avatar">
+</div>
+
+  <div class="icon">
+    <i class="fas fa-plus-circle"></i>
+  </div>
+
+  <div class="pet-avatar">
+    <%= cl_image_tag @pet.photo%>
+  </div>
+</div>
+
+<div class="container">
+  <h1>It's a DATE!</h1>
+
+  <div class="booking-info">
+    <p class="label">Pet's name</p>
+    <p class="input"><%= @pet.name %></p>
+    <p class="label">Dates</p>
+    <p class="input"><%= @booking.start_date %> - <%= @booking.end_date %></p>
+    <p class="label">Location</p>
+    <p class="input"><%= @pet.address %></p>
+    <p class="label">Total price</p>
+    <p class="input"><%= @pet.price %></p>
+  </div>
+</div>
