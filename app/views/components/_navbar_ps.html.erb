@@ -2,8 +2,10 @@
   <a class="navbar-brand flex-grow-1" href="/pets">PET SHOP BOYS </a>
 
   <div class="current_user-info d-inline-flex align-items-center px-3">
-    <p class="px-2"><%= current_user.first_name %></p>
-    <%= cl_image_tag current_user.photo, class: "avatar" %>
+    <% if current_user.present? %>
+      <p class="px-2"><%= current_user.first_name %></p>
+      <%= cl_image_tag current_user.photo, class: "avatar" %>
+    <% end %>
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
