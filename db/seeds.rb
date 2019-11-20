@@ -1,3 +1,6 @@
+puts "destroy reviews"
+Review.destroy_all
+
 puts "destroying bookings"
 Booking.destroy_all
 
@@ -8,19 +11,20 @@ puts "destroying users"
 User.destroy_all
 
 
+
 addresses = [
-  "Av. da República 46, 1050-195 Lisboa",
-  "R. Duque de Palmela 34, 1250-098 Lisboa",
+  "Avenida da República 46, 1050-195 Lisboa",
+  "Rua Duque de Palmela 34, 1250-098 Lisboa",
   "Calçada do Desterro 22, 1150-126 Lisboa",
   "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
-  "R. Barata Salgueiro 53, 1250-043 Lisboa",
-  "R. Júlio César Machado 9, 1250-042 Lisboa",
+  "Rua Barata Salgueiro 53, 1250-043 Lisboa",
+  "Rua Júlio César Machado 9, 1250-042 Lisboa",
   "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
-  "Av. Alm. Reis 35, 1150-018 Lisboa",
+  "Avenida Almirante Reis 35, 1150-018 Lisboa",
   "Avenida Paulista 30, São Paulo",
-  "23 tabenkin st, bat yam, israel",
-  "Main street 50, London",
-  "Calle de la fiesta 40, Barcelona"
+  "23 Tabenkin Street, Bat Yam, Israel",
+  "Main Street 50, London",
+  "Calle de La Fiesta 40, Barcelona"
 ]
 
 i = 0
@@ -45,7 +49,7 @@ puts "making users"
       user: user,
       name: Faker::Superhero.name,
       description: Faker::Lorem.sentence(word_count: rand(10..40)),
-      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..4)}.jpg"),
+      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..7)}.jpg"),
       address: user.address,
       price: [5, 10, 25, 50].sample,
       animal_type: %w(dog cat sheep unicorn snake lion monkey giraffe).sample
@@ -70,5 +74,11 @@ date2 = Time.now + (60 * 60 * 24 * 31)
     pet: pets.sample,
     start_date: random_start_date.to_date,
     end_date: random_end_date.to_date
+  )
+  puts "creating review"
+  Review.create(
+    rating: rand(0..5),
+    content: Faker::Lorem.sentence(word_count: rand(10..40)),
+    booking: booking
   )
 end

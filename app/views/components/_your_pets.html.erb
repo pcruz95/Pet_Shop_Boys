@@ -7,6 +7,7 @@
 <%= link_to "+ Add a Pet", new_pet_path, class: 'btn btn-primary mb-3' %>
 
 <% if @user.pets.count > 0 %>
+
   <div id="accordion">
 
     <% @user.pets.each_with_index do |pet, i| %>
@@ -28,6 +29,8 @@
           <% if pet.bookings.count < 1 %>
             <p>This pet has no bookings!</p>
           <% else %>
+
+          <h5 class="mb-2"><%= "#{pet.name}'s bookings:" %></h5>
 
           <table class="table">
             <thead>
