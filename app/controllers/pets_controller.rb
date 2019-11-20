@@ -3,13 +3,13 @@ class PetsController < ApplicationController
   before_action :authorize_pet, except: [:index, :new, :create]
 
   def index
+    @pets = policy_scope(Pet)
     if params[:query].present?
       @pets = Pet.search_by_address_and_type(params[:query])
     else
       @pets = Pet.all
     end
 
-    @pets = policy_scope(Pet)
     authorize @pets
 
     @markers = @pets.map do |flat|
