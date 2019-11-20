@@ -25,20 +25,20 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    @review.update(review_params)
+  # def update
+  #   @review.update(review_params)
 
-    redirect_to pet_path(@pet)
-  end
+  #   redirect_to pet_path(@pet)
+  # end
 
-  def destoy
-    @review.destroy
+  # def destoy
+  #   @review.destroy
 
-    redirect_to reviews_path
-  end
+  #   redirect_to reviews_path
+  # end
 
   private
 
