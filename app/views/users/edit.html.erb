@@ -1,10 +1,12 @@
-<h1>Edit your account details</h1>
+<div class="container mb-5">
+  <h1>Edit your account details</h1>
 
-<%= simple_form_for(@user) do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :email %>
-  <%= f.submit class: 'btn btn-primary' %>
-<% end %>
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :email %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
