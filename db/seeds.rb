@@ -16,13 +16,17 @@ addresses = [
   "R. Barata Salgueiro 53, 1250-043 Lisboa",
   "R. Júlio César Machado 9, 1250-042 Lisboa",
   "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
-  "Av. Alm. Reis 35, 1150-018 Lisboa"
+  "Av. Alm. Reis 35, 1150-018 Lisboa",
+  "Avenida Paulista 30, São Paulo",
+  "23 tabenkin st, bat yam, israel",
+  "Main street 50, London",
+  "Calle de la fiesta 40, Barcelona"
 ]
 
 i = 0
 
 puts "making users"
-10.times do
+15.times do
   puts "making a user"
   i += 1
   puts "email: #{i}@gmail.com, pwd: pwdpwd"
@@ -57,7 +61,7 @@ users = User.all
 date1 = Time.now
 date2 = Time.now + (60 * 60 * 24 * 31)
 
-10.times do
+15.times do
   puts "creating a booking"
   random_start_date = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
   random_end_date = random_start_date + (60 * 60 * 24 * rand(1..10))
