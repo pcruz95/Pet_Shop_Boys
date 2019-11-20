@@ -14,7 +14,8 @@
   </div>
 </div>
 
-<h1 class="">It's a DATE!</h1>
+
+<h1>It's a DATE!</h1>
 
 <div class="container d-flex my-3">
   <table class="table table-borderless table-hover">
@@ -33,11 +34,27 @@
       </tr>
       <tr>
         <td class="text-muted">Total price</td>
-        <td class="font-weight-bold"><%= @pet.price * (@booking.end_date - @booking.start_date).to_i %> € </td>
+        <td class="font-weight-bold"><%= calcule_price(@pet.price, @booking.end_date, @booking.start_date) %> € </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<% if @review.id.nil? %>
+  <h3>Review this pet:</h3>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :rating, collection: (0..5) %>
+    <%= f.input :content %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <h3>Review:</h3>
+  <h5>Rating: <%= "⭐️" * @review.rating %></h5>
+  <p><%= @review.content %></p>
+<% end %>
+
+
+
 
 
 <%= link_to 'Delete this booking', pet_booking_path(@pet, @booking), method: :delete, data: { confirm: "Are you sure?" } %>
