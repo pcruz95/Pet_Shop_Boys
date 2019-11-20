@@ -6,10 +6,18 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    record == user
+    record == user || record_booked_users_pet.include?(record.id)
   end
 
   def update?
     record == user
+  end
+
+  private
+
+  def record_booked_users_pet
+    pet_bookings = []
+    user.pets.each { |pet| pet_bookings << pet.bookings }
+    pet_bookings.flatten.map { |booking| booking.user_id }
   end
 end
