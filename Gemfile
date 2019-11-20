@@ -4,6 +4,7 @@ ruby '2.6.3'
 gem 'faker'
 gem 'pundit'
 gem 'geocoder'
+gem 'pg_search', '~> 2.3.0'
 
 gem 'bootsnap', require: false
 # gem 'jbuilder', '~> 2.0'
