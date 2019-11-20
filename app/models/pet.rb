@@ -13,4 +13,11 @@ class Pet < ApplicationRecord
     return 0 if reviews.count == 0
     reviews.sum(:rating) / reviews.count
   end
+
+  include PgSearch::Model
+  pg_search_scope :search_by_address_and_type,
+    against: [ :address, :animal_type ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
