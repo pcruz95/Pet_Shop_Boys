@@ -1,0 +1,29 @@
+.index_map_style {
+  height: calc(100vh - 56px);
+  position: absolute;
+  width: 700px;
+}
+
+.vh-100 {
+  height: calc(100vh - 56px);
+}
+
+.left {
+  flex-grow: 1;
+  overflow: scroll;
+  padding: 0 20px;
+}
+
+.right {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+}
+
+.my-col {
+  padding: 0 !important;
+}
