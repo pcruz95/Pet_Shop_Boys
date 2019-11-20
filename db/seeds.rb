@@ -13,18 +13,14 @@ User.destroy_all
 
 
 addresses = [
-  "Avenida da República 46, 1050-195 Lisboa",
-  "Rua Duque de Palmela 34, 1250-098 Lisboa",
-  "Calçada do Desterro 22, 1150-126 Lisboa",
-  "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
-  "Rua Barata Salgueiro 53, 1250-043 Lisboa",
-  "Rua Júlio César Machado 9, 1250-042 Lisboa",
-  "Largo do Intendente Pina Manique Nº 6, 1100-285 Lisboa",
-  "Avenida Almirante Reis 35, 1150-018 Lisboa",
-  "Avenida Paulista 30, São Paulo",
-  "23 Tabenkin Street, Bat Yam, Israel",
-  "Main Street 50, London",
-  "Calle de La Fiesta 40, Barcelona"
+  "Avenida da República, Lisboa",
+  "Rua Duque de Palmela, Lisboa",
+  "Calçada do Desterro, Lisboa",
+  "Largo do Intendente Pina Manique, Lisboa",
+  "Rua Barata Salgueiro, Lisboa",
+  "Rua Júlio César Machado, Lisboa",
+  "Largo do Intendente Pina Manique",
+  "Avenida Almirante Reis, Lisboa"
 ]
 
 i = 0
