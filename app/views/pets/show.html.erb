@@ -10,6 +10,12 @@
 
 
     <%= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn btn-primary' %>
+
+    <!-- pets review section -->
+    <% if @pet.reviews.any? %>
+      <%= render 'components/pets_show_reviews' %>
+    <% end %>
+
   </div>
 
   <% if policy(@pet).edit? %>
@@ -20,3 +26,6 @@
     <%= link_to 'KILL Your Pet', pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 </div>
+
+
+

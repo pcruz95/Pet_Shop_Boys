@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="container justify-content-center">
+<div class="justify-content-center">
   <h1>It's a DATE!</h1>
 
   <div class="booking-info">
@@ -27,14 +27,18 @@
   </div>
 </div>
 
-<h3>Review this pet:</h3>
-
-<%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :rating, collection: (0..5) %>
-  <%= f.input :content %>
-  <%= f.submit class: 'btn btn-primary' %>
+<% if @review.id.nil? %>
+  <h3>Review this pet:</h3>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :rating, collection: (0..5) %>
+    <%= f.input :content %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <h3>Review:</h3>
+  <h5>Rating: <%= "⭐️" * @review.rating %></h5>
+  <p><%= @review.content %></p>
 <% end %>
-
 
 
 
