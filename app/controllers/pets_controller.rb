@@ -5,6 +5,13 @@ class PetsController < ApplicationController
   def index
     @pets = policy_scope(Pet)
     authorize @pets
+
+    @markers = @pets.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def show

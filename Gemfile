@@ -3,6 +3,7 @@ ruby '2.6.3'
 
 gem 'faker'
 gem 'pundit'
+gem 'geocoder'
 
 gem 'bootsnap', require: false
 # gem 'jbuilder', '~> 2.0'
