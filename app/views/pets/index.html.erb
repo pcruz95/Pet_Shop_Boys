@@ -15,7 +15,8 @@
                 <h5><%= pet.name %></h5>
                 <p><%= pet.price %>€</p>
               </div>
-              <h6><%= pet.address %></h6>
+              <p><%= "⭐️" * pet.average_rating %></p>
+              <p><%= pet.address %></p>
               <%= link_to 'Pet Details', pet_path(pet), class: "btn btn-primary" %>
             </div>
           </div>

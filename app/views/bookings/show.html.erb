@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <td class="text-muted">Total price</td>
-        <td class="font-weight-bold"><%= calcule_price(@pet.price, @booking.end_date, @booking.start_date) %> € </td>
+        <td class="font-weight-bold"><%= calcule_price(@pet.price, @booking.start_date, @booking.end_date) %> € </td>
       </tr>
     </tbody>
   </table>
