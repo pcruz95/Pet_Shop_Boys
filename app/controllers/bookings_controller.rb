@@ -4,6 +4,11 @@ class BookingsController < ApplicationController
   before_action :authorize_booking, except: [:index, :new, :create]
 
   def show
+    if @booking.review.nil?
+      @review = Review.new
+    else
+      @review = @booking.review
+    end
   end
 
   def new
@@ -20,6 +25,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to pet_booking_path(@pet, @booking)
     else
+      flash[:error] = 'There was an error creating your booking!'
       render :new
     end
   end
