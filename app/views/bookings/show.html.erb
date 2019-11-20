@@ -1,30 +1,43 @@
 <div class="container d-inline-flex justify-content-around align-items-center my-3">
   <div class="user-avatar">
-    <%= cl_image_tag current_user.photo, height: 250, width: 250, crop: :fill%>
+    <p><%= cl_image_tag @booking.user.photo, height: 250, width: 250, crop: :fill%></p>
+    <p> <%= link_to @booking.user.first_name, user_path(@booking.user) %></p>
   </div>
 
-  <div class="icon" style="font-size: 2.5rem;">
+  <div class="icon mx-3" style="font-size: 2.5rem;">
     <i class="fas fa-plus-circle"></i>
   </div>
 
   <div class="pet-avatar">
-    <%= cl_image_tag @pet.photo, height: 250, width: 250, crop: :fill%>
+    <p><%= cl_image_tag @pet.photo, height: 250, width: 250, crop: :fill%></p>
+    <p><%= link_to @pet.name, pet_path(@pet) %></p>
   </div>
 </div>
 
-<div class="justify-content-center">
-  <h1>It's a DATE!</h1>
 
-  <div class="booking-info">
-    <p class="label">Pet's name: </p>
-    <p class="input"><%= @pet.name.capitalize %></p>
-    <p class="label">Dates:</p>
-    <p class="input"><%= @booking.start_date %> - <%= @booking.end_date %></p>
-    <p class="label">Location</p>
-    <p class="input"><%= @pet.address %></p>
-    <p class="label">Total price</p>
-    <p class="input"><%= @pet.price %></p>
-  </div>
+<h1>It's a DATE!</h1>
+
+<div class="container d-flex my-3">
+  <table class="table table-borderless table-hover">
+    <tbody>
+      <tr>
+        <td class="text-muted">Location</td>
+        <td class="font-weight-bold"><%= @pet.address %></td>
+      </tr>
+      <tr>
+        <td class="font-weight-bold"><%= @booking.start_date %></td>
+        <td class="font-weight-bold"><%= @booking.end_date %></td>
+      </tr>
+      <tr>
+        <td class="text-muted">Booking number</td>
+        <td class="font-weight-bold"><%= @booking.id %></td>
+      </tr>
+      <tr>
+        <td class="text-muted">Total price</td>
+        <td class="font-weight-bold"><%= calcule_price(@pet.price, @booking.end_date, @booking.start_date) %> € </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <% if @review.id.nil? %>
