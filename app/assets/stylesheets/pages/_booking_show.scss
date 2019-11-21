@@ -12,5 +12,56 @@
   h1 {
     font-size:130px;
     color: white;
+    font-family: $headers-font;
   }
 }
+
+
+.user_or_pet_block {
+  opacity: 0.5;
+  border: 1px solid rgba(205, 206, 210, .8);
+  padding: 5px;
+  border-radius: 33px;
+  color: $dark-gray;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    border: 1px solid rgba(205, 206, 210, .8);
+    background-color: 1px solid rgba(205, 206, 210, .2);
+  }
+}
+
+.booking_inner_div {
+  padding: 0 8px;
+  color: $light-gray;
+  margin-top: 12px;
+}
+
+.booking_dates_div {
+  color: $dark-gray;
+  text-align: right;
+  h5 {
+    display: inline-block;
+    font-family: $headers-font;
+    margin: 0;
+    padding: 0;
+    margin: 0 8px 0 8px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.booking_show_map {
+  height: 400px;
+}
+
+
+
+
+
+
+
+
+
