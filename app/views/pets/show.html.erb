@@ -6,6 +6,7 @@
       <% if @pet.reviews.any? %>
         <%= render 'components/pets_show_reviews' %>
       <% end %>
+      <div class="border-bottom my-5"></div>
 
       <h5>Address</h5>
       <p><%= @pet.address %></p>
@@ -23,7 +24,20 @@
       <p><%= @pet.price %>€ per day</p>
       <h5>Details</h5>
       <p class="lead"><%= @pet.description %></p>
-      <%= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn btn-primary' %>
+
+      <div class="border-bottom my-5"></div>
+      <h5>Book <%= @pet.name %></h5>
+      <%= simple_form_for [@pet, @booking] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Book this pet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <%#= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn btn-primary' %>
     </div>
   </div>
 </div>
