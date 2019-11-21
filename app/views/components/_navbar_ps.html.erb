@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:rgba(0,0,0,0.4);">
+<nav id="navbarHomePage" class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:rgba(0,0,0,0.4);">
   <%= link_to '🐶 PET SHOP BOYS', root_path, class: "navbar-brand flex-grow-1" %>
 ​
   <div class="d-inline-flex">
@@ -8,7 +8,7 @@
           <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
           <%= link_to 'Log-out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log-out?'}, class: "nav-item nav-link" %>
         <% else %>
-          <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
+          <%= link_to 'Pets', pets_path, class: "navbar-menus" %>
         <% end %>
       </div>
     </div>
@@ -20,8 +20,8 @@
           <%= cl_image_tag current_user.photo, class: "avatar" %>
         <% end %>
       <% else %>
-        <%= link_to 'Log in', user_session_path, class: "btn btn-light" %>
+        <%= link_to 'Log in', user_session_path, class: "navbar-menus" %>
       <% end %>
     </div>
   </div>
-</div>
+</nav>
