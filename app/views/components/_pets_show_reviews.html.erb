@@ -1,6 +1,6 @@
 <h3 class="mt-4">Reviews of <%= @pet.name %>:</h3>
 
-<h5 class="mb-3">Average rating: <%= render 'components/star', pet: @pet %></h5>
+<p class="mb-3 d-inline-block">Average rating: &nbsp <%= render 'components/star', pet: @pet %><p>
 
 <table class="table">
   <thead>
@@ -14,7 +14,7 @@
     <% @pet.reviews.each do |review| %>
 
       <tr>
-        <td><%= "⭐️" * review.rating %></td>
+        <td><%= render 'components/review_star', review: review %></td>
         <td><%= review.content %></td>
       </tr>
 
