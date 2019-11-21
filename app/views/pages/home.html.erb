@@ -1,35 +1,21 @@
 <div id="home-banner">
-  <div id="home-search">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title d-flex justify-content-center">SEARCH PETS</h2>
-            <h3 class="d-flex justify-content-center">Find a pet by location or type.</h3>
-            <div class="d-inline-flex justify-content-center mt-3">
-              <%= form_tag pets_path, method: :get do %>
-                <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control ml-4",
-                  placeholder: "Location or pet type"
-                %>
-            <div class="d-inline-flex justify-content-right mt-5">
-              <%= submit_tag "Search", class: "btn btn-primary d-inline-flex justify-content-right" %>
-            </div>
-              <% end %>
-            </div>
+  <div id="home-search" class="position-relative">
 
-            </div>
-          </div>
-        </div>
+    <div class="card card-search" style="box-shadow: 0 0 10px rgba(0,0,0,0.4);">
+      <div class="card-body">
+        <h3 class="mb-3">Find unique animals for those special moments</h3>
+        <%= form_tag pets_path, method: :get do %>
+          <%= label_tag(:q, "WHERE") %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mb-3",
+          placeholder: "Anywhere"
+           %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
 <%= render 'components/pets_index' %>
-
-<!-- <div class="container" id="pets-scrolled-down"> -->
-  <%#= render 'pets/index_scrolldown' %>
-<!-- </div> -->
-
