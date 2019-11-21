@@ -1,3 +1,10 @@
+
+<% @pets.sort_by { |pet| - pet.average_rating }.each do |pet| %>
+  <div class="card card_pet">
+    <%= link_to pet_path(pet) do %>
+      <%= cl_image_tag pet.photo, class: "card-img-top pet-img" %>
+    <% end %>
+
 <% @pets.each do |pet| %>
   <%= link_to pet_path(pet) do %>
     <div class="card card_pet">
