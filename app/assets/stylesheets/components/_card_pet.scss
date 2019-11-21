@@ -1,5 +1,4 @@
 .card_pet {
-  width: 16rem;
   height: 270px;
   font-family: $body-font;
   color: $dark-gray;
@@ -8,6 +7,7 @@
 
 .pet-img {
   height: 195px;
+  object-fit: cover;
 
 }
 
