@@ -1,31 +1,44 @@
-<div class="container">
-  <div class="jumbotron">
-    <%= cl_image_tag @pet.photo, height: 250, width: 250, crop: :fill%>
-    <h1 class="display-4"><%= @pet.name %></h1>
-    <h3><%= @pet.address %></h3>
-    <h5><%= @pet.animal_type %></h5>
-    <h5><%= @pet.price %>€</h5>
-    <p class="lead"><%= @pet.description %></p>
-    <hr class="my-4">
+<div class="container mt-3 mb-5">
+  <div class="row">
+    <div class="col-lg-8">
+      <%= cl_image_tag @pet.photo, class: 'pet-show-image'%>
 
+      <% if @pet.reviews.any? %>
+        <%= render 'components/pets_show_reviews' %>
+      <% end %>
+      <div class="border-bottom my-5"></div>
 
-    <%= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn btn-primary' %>
+      <h5>Address</h5>
+      <p><%= @pet.address %></p>
+      <div class="booking_show_map">
+          <div
+          id="map"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+          class="booking_show_map"></div>
+      </div>
 
-    <!-- pets review section -->
-    <% if @pet.reviews.any? %>
-      <%= render 'components/pets_show_reviews' %>
-    <% end %>
+    </div>
+    <div class="col-lg-4">
+      <h3 class="display-4"><%= @pet.name %></h3>
+      <p><%= @pet.price %>€ per day</p>
+      <h5>Details</h5>
+      <p class="lead"><%= @pet.description %></p>
 
+      <div class="border-bottom my-5"></div>
+      <h5>Book <%= @pet.name %></h5>
+      <%= simple_form_for [@pet, @booking] do |f| %>
+        <div class="form-inputs">
+          <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+          <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Book this pet", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+      <%#= link_to 'Book this pet', new_pet_booking_path(@pet), class: 'btn btn-primary' %>
+    </div>
   </div>
-
-  <% if policy(@pet).edit? %>
-    <%= link_to 'Edit Your Pet', edit_pet_path(@pet) %>
-  <% end %>
-
-  <% if policy(@pet).destroy? %>
-    <%= link_to 'KILL Your Pet', pet_path(@pet), method: :delete, data: { confirm: "Are you sure?" } %>
-  <% end %>
 </div>
-
-
 

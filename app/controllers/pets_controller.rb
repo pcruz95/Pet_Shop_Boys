@@ -20,6 +20,8 @@ class PetsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
+    @markers = [{lat: @pet.latitude, lng: @pet.longitude}]
   end
 
   def new
