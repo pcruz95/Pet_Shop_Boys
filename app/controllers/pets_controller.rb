@@ -5,13 +5,11 @@ class PetsController < ApplicationController
   def index
     @pets = policy_scope(Pet)
     if params[:query].present?
-      @pets = Pet.search_by_address_and_type(params[:query])
+      # @pets = Pet.search_by_address_and_type(params[:query]).joins(:bookings).joins(:reviews).order("reviews.rating")
+      @pets = Pet.search_by_address_and_type(params[:query]).sort_by { |pet| - pet.average_rating }
     else
-      @pets = Pet.all
+      @pets = Pet.all.sort_by { |pet| - pet.average_rating }
     end
-
-    authorize @pets
-
     @markers = @pets.map do |flat|
       {
         lat: flat.latitude,
