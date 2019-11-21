@@ -12,5 +12,11 @@
 }
 
 .navbar {
-  background-color: transparent !important;
+  background-color: transparent ;
+  transition: background-color 0.4s ease-out;
+}
+
+.navbar.scroll {
+  background-color: white;
+  color: #eef;
 }
