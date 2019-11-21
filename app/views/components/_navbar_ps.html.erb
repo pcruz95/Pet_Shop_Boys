@@ -1,33 +1,27 @@
-<nav class="navbar navbar-dark bg-dark sticky-top">
- <%= link_to '🐶 PET SHOP BOYS', root_path, class: "navbar-brand flex-grow-1" %>
+<div class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color:rgba(0,0,0,0.4);">
+  <%= link_to '🐶 PET SHOP BOYS', root_path, class: "navbar-brand flex-grow-1" %>
+​
+  <div class="d-inline-flex">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <% if current_user.present? %>
+          <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
+          <%= link_to 'Log-out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log-out?'}, class: "nav-item nav-link" %>
+        <% else %>
+          <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="current_user-info d-inline-flex align-items-center px-3">
-    <% if current_user.present? %>
-      <p class="px-2 mb-0 text-muted"><%= current_user.first_name %></p>
-      <%= link_to user_path(current_user) do %>
-        <%= cl_image_tag current_user.photo, class: "avatar" %>
-      <% end %>
-    <% else %>
-      <%= link_to 'Log in', user_session_path, class: "btn btn-light" %>
-    <% end %>
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+    <div class="current_user-info d-inline-flex align-items-center px-3">
       <% if current_user.present? %>
-        <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
-        <%= link_to 'Log-out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log-out?'}, class: "nav-item nav-link" %>
+        <p class="px-2 mb-0 text-muted"><%= current_user.first_name %></p>
+        <%= link_to user_path(current_user) do %>
+          <%= cl_image_tag current_user.photo, class: "avatar" %>
+        <% end %>
       <% else %>
-        <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
+        <%= link_to 'Log in', user_session_path, class: "btn btn-light" %>
       <% end %>
-      <!-- link_to 'Bookings', pet_booking_path, class: "nav-item nav-link" -->
     </div>
   </div>
-</nav>
-
-
-
+</div>
