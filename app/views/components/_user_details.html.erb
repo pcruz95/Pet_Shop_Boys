@@ -1,10 +1,10 @@
 <div class="d-flex flex-wrap">
-  <div class="user_show_big_img d-inline-block mr-3" style="background-image: url(<%= cl_image_path @user.photo %>);" ></div>
+  <div class="user_show_big_img d-inline-block mb-3" style="background-image: url(<%= cl_image_path @user.photo %>);" ></div>
 
   <div class="flex-grow-1 mr-3 user_show_description_box">
-    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <h3 class="headers-font"><%= @user.first_name %> <%= @user.last_name %></h3>
     <%= link_to "Edit your details", edit_user_path(@user) %>
-    <h5>Description</h5>
+    <h5 class="mt-2">Description</h5>
     <p><%= @user.description %></p>
     <h5>Address</h5>
     <p><%= @user.address %></p>
