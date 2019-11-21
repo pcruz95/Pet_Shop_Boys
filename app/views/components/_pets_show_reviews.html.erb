@@ -14,7 +14,11 @@
     <% @pet.reviews.each do |review| %>
 
       <tr>
-        <td><%= render 'components/review_star', review: review %></td>
+        <td>
+          <div class="pet_show_review_stars">
+            <%= render 'components/review_star', review: review %>
+          </div>
+        </td>
         <td><%= review.content %></td>
       </tr>
 
