@@ -1,0 +1,14 @@
+<div class="d-inline-flex">
+  <% case pet.average_rating %>
+    <% when 4.5..5 %>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <% when 3.5..4.4 %>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="empty-stars"><i class="fas fa-star"></i></div>
+    <% when 2.5..3.4 %>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="empty-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <% when 1.5..2.4 %>
+      <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="empty-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+    <% when 0..1.4 %>
+      <div class="stars"><i class="fas fa-star"></i></div><div class="empty-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+  <% end %>
+</div>
