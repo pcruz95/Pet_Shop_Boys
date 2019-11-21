@@ -9,11 +9,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if policy(Pet).create? %>
-          <%= link_to "+ New Pet", new_pet_path, class: "nav-item nav-link" %>
+          <%= link_to "+ New Pet", new_pet_path, class: "nav-item nav-link2" %>
         <% end %>
         <% if current_user.present? %>
-          <%= link_to 'Pets', pets_path, class: "nav-item nav-link" %>
-          <%= link_to 'Log-out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log-out?'}, class: "nav-item nav-link" %>
+          <%= link_to 'Pets', pets_path, class: "nav-item nav-link2" %>
+          <%= link_to 'Log-out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to log-out?'}, class: "nav-item nav-link2" %>
         <% else %>
           <%= link_to 'Pets', pets_path, class: "navbar-menus" %>
         <% end %>
@@ -22,8 +22,8 @@
 
     <div class="current_user-info d-inline-flex align-items-center px-3">
       <% if current_user.present? %>
-        <p class="px-2 mb-0 text-muted"><%= current_user.first_name %></p>
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_path(current_user), class: 'navbar-user d-inline-flex align-items-center' do %>
+          <p class="px-2 mb-0"><%= current_user.first_name %></p>
           <%= cl_image_tag current_user.photo, class: "avatar" %>
         <% end %>
       <% else %>
