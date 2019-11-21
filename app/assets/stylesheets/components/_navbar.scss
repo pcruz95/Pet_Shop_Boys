@@ -1,3 +1,16 @@
+.pet-logo {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+.home-button {
+  &:hover {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -18,5 +31,9 @@
 
 .navbar.scroll {
   background-color: white;
-  color: #eef;
+  color: $purple;
+}
+
+.nav-link {
+  color: $purple;
 }
