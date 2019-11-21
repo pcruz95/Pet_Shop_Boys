@@ -10,7 +10,7 @@ const initMapbox = (location) => {
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v10',
       center: location,
-      zoom: 11
+      zoom: 12
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
