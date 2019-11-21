@@ -1,21 +1,29 @@
+
 <% @pets.sort_by { |pet| - pet.average_rating }.each do |pet| %>
   <div class="card card_pet">
     <%= link_to pet_path(pet) do %>
       <%= cl_image_tag pet.photo, class: "card-img-top pet-img" %>
     <% end %>
 
-    <div class="card-body p-2">
+<% @pets.each do |pet| %>
+  <%= link_to pet_path(pet) do %>
+    <div class="card card_pet">
 
-      <div class="card-text">
-        <p class="mb-0 font-weight-bold"><%= pet.name %></p>
+        <%= cl_image_tag pet.photo, class: "card-img-top pet-img" %>
 
-        <div class="pet-info">
-          <p><%= pet.price %>€</p>
-          <div><%= render 'components/star', pet: pet %></div>
+
+      <div class="card-body p-2">
+
+        <div class="card-text">
+          <p class="mb-0 font-weight-bold"><%= pet.name %></p>
+
+          <div class="pet-info">
+            <p><%= pet.price %>€</p>
+            <div><%= render 'components/star', pet: pet %></div>
+          </div>
+
         </div>
-
       </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
-
