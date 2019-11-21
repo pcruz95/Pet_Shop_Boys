@@ -45,15 +45,15 @@
       <tbody>
         <tr>
           <td class="text-muted">Booking number</td>
-          <td class="font-weight-bold"><%= @booking.id %></td>
+          <td class="font-weight-bold text-right"><%= @booking.id %></td>
         </tr>
         <tr>
           <td class="text-muted">Total price</td>
-          <td class="font-weight-bold"><%= calcule_price(@pet.price, @booking.start_date, @booking.end_date) %> € </td>
+          <td class="font-weight-bold text-right"><%= calcule_price(@pet.price, @booking.start_date, @booking.end_date) %> € </td>
         </tr>
         <tr>
           <td class="text-muted">Location</td>
-          <td class="font-weight-bold"><%= @pet.address %></td>
+          <td class="font-weight-bold text-right"><%= @pet.address %></td>
         </tr>
       </tbody>
     </table>
@@ -63,7 +63,7 @@
   <div class="booking_show_map">
       <div
       id="map"
-      data-markers="<%= @pet.address.to_json %>"
+      data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       class="booking_show_map"></div>
   </div>

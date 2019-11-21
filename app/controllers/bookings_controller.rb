@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
   before_action :authorize_booking, except: [:index, :new, :create]
 
   def show
+    @markers = [{lat: @pet.latitude, lng: @pet.longitude}]
+
     if @booking.review.nil?
       @review = Review.new
     else
