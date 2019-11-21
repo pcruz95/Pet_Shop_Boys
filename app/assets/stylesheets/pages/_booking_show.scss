@@ -1,0 +1,67 @@
+.booking-banner {
+  height: 60vh;
+  min-height: 300px;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), asset-url('booking_show/success.jpg');
+  // background:  no-repeat center center fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  h1 {
+    font-size:130px;
+    color: white;
+    font-family: $headers-font;
+  }
+}
+
+
+.user_or_pet_block {
+  opacity: 0.9;
+  border: 1px solid rgba(205, 206, 210, .8);
+  padding: 5px;
+  border-radius: 33px;
+  color: $dark-gray;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+    border: 1px solid rgba(205, 206, 210, .8);
+    background-color: 1px solid rgba(205, 206, 210, .2);
+  }
+}
+
+.booking_inner_div {
+  padding: 0 8px;
+  color: $light-gray;
+  margin-top: 12px;
+}
+
+.booking_dates_div {
+  color: $dark-gray;
+  text-align: right;
+  h5 {
+    display: inline-block;
+    font-family: $headers-font;
+    margin: 0;
+    padding: 0;
+    margin: 0 8px 0 8px;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.booking_show_map {
+  height: 400px;
+}
+
+
+
+
+
+
+
+
+

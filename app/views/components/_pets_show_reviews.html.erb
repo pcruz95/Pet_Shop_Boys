@@ -1,6 +1,6 @@
 <h3 class="mt-4">Reviews of <%= @pet.name %>:</h3>
 
-<h5 class="mb-3">Average rating: <%= "⭐️" * @pet.average_rating %></h5>
+<h5 class="mb-3">Average rating: <%= render 'components/star', pet: @pet %></h5>
 
 <table class="table">
   <thead>
