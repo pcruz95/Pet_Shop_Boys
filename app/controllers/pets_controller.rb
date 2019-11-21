@@ -10,6 +10,7 @@ class PetsController < ApplicationController
     else
       @pets = Pet.all.sort_by { |pet| - pet.average_rating }
     end
+
     @markers = @pets.map do |flat|
       {
         lat: flat.latitude,

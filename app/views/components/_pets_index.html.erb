@@ -2,55 +2,34 @@
   <%# if policy(Pet).create? %>
     <%#= link_to "+ New Pet", new_pet_path, class: 'btn btn-primary mb-3' %>
   <%# end %>
-<div class="_1gw6tte">
-  <div class="_1sx1020z">
-    <div>
-      <div class="_aov0j6">
-        <div>
-          <div class="_1edw18ts">
-            <div class="_5kaapu">
-              <div>
-                <div class="_76dwae">
-                  <h3 class="_jmmm34f">
-                    <div>
-                      TOP 5 OF THIS WEEK
-                    </div>
-                  </h3>
-                </div>
-              </div>
+<div class="container">
+  <div class="top-pets">
+      <h2 class="card-card_pet_title">
+       TOP 5 OF THIS WEEK
+      </h2>
+    <div class="top-pet-row">
+      <% @pets.sort_by { |pet| - pet.average_rating }.take(5).each do |pet| %>
+        <div class="card card_pet mx-2" id="card-top-3">
+          <%= link_to pet_path(pet) do %>
+            <%= cl_image_tag pet.photo, class: "card-img-top pet-img" %>
+          <% end %>
+          <div class="card-body p-2">
+            <div class="card-text">
+              <p class="mb-0 font-weight-bold"><%= pet.name %></p>
+              <div><%= render 'components/star', pet: pet %></div>
             </div>
           </div>
         </div>
-        <div>
-          <div>
-
-            <div style="margin-top: 8px; margin-bottom: 8px;">
-              <div class="_6htn2u">
-                <ul class="_3uceys">
-                  <% @pets.sort_by { |pet| - pet.average_rating }.first(5).each do |pet| %>
-                  <li class="_1hfjk81" style="border-width: 0px 5px; max-width: 33.3333%; flex: 0 0 33.3333%;">
-                    <%= link_to pet_path(pet) do %>
-                      <%= cl_image_tag pet.photo, class: "card-picture" %>
-                        <h5><%= pet.name.upcase! %></h5>
-                        <p><%= "⭐️" * pet.average_rating %></p>
-                    <% end %>
-                  <% end %>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
 
+
 <div class="d-flex">
   <!-- cards grid -->
   <div class="cards-grid left vh-100">
-    <%= render 'components/card_pet' %>
+    <%= render 'components/card_pet', pets: @pets %>
 
   </div>
 
