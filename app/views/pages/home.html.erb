@@ -1,22 +1,31 @@
 <!-- don't change this ID, it is used in scroll_navbar.js -->
 <div id="home-banner">
-
-  <div id="home-search" class="position-relative">
+  <div id="home-search">
 
     <div class="card card-search" style="box-shadow: 0 0 10px rgba(0,0,0,0.4);">
-      <div class="card-body">
+      <div class="card-body label-search">
         <h3 class="mb-3">Find unique animals for those special moments</h3>
         <%= form_tag pets_path, method: :get do %>
-          <%= label_tag(:q, "WHERE") %>
+          <%= label_tag(:q, "Location", style: "font-weight: 600;font-style: italic;") %>
           <%= text_field_tag :query,
           params[:query],
           class: "form-control mb-3",
           placeholder: "Anywhere"
            %>
-          <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= label_tag(:q, "Animal Type", style: "font-weight: 600;font-style: italic;") %>
+          <%= text_field_tag :query,
+          params[:query],
+          class: "form-control mb-3",
+          placeholder: "Animal Type"
+           %>
+          <%= submit_tag "Search", class: "btn btn-outline-light" %>
         <% end %>
       </div>
     </div>
+  </div>
+
+  <div class="home-img">
+    <%= image_tag("peacock.jpeg", alt: "home page") %>
   </div>
 </div>
 

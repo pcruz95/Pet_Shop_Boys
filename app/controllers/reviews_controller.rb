@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
       redirect_to pet_booking_path(@booking.pet, @booking)
     end
   end
-  
+
   # def edit
   # end
 
