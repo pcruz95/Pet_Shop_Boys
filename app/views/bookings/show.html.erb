@@ -4,72 +4,94 @@
   </div>
 </div>
 
-
 <div class="container mb-5">
+  <div class="row">
+    <div class="col-lg-8">
+        <div class="flex-shrink-0 d-inline-block">
+          <div class="d-inline-flex align-items-center my-3">
+            <%= link_to user_path(@booking.user) do%>
+              <div class="d-inline-block user_or_pet_block">
+                <%= cl_image_tag @booking.user.photo, class: 'avatar-large d-inline-block booking_user_or_pet_image' %>
+                <p class="d-inline-block"><%= @booking.user.first_name %></p>
+              </div>
+            <% end %>
 
-<div class="d-flex">
-  <div class="flex-shrink-0 d-inline-block">
-    <div class="d-inline-flex align-items-center my-3">
-      <%= link_to user_path(@booking.user) do%>
-        <div class="d-inline-block user_or_pet_block">
-          <%= cl_image_tag @booking.user.photo, class: 'avatar-large d-inline-block booking_user_or_pet_image' %>
-          <p class="d-inline-block"><%= @booking.user.first_name %></p>
+            <div class="d-inline-block booking_inner_div"><p>&nbsp&&nbsp</p></div>
+
+
+
+            <%= link_to pet_path(@pet) do%>
+              <div class="d-inline-block user_or_pet_block">
+                <%= cl_image_tag @pet.photo, class: 'avatar-large d-inline-block' %>
+                <p class="d-inline-block"><%= @pet.name %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="flex-shrink-0 d-inline-block booking_dates_div d-flex align-items-center">
+          <h5>Start</h5>
+          <p><%= @booking.start_date.strftime("%B #{@booking.start_date.day.ordinalize}, %Y")%></p>
+          <h5>End</h5>
+          <p><%= @booking.end_date.strftime("%B #{@booking.end_date.day.ordinalize}, %Y") %></p>
+        </div>
+
+        <div class="border-bottom my-5"></div>
+
+        <div class="d-flex justify-content-between">
+          <table class="table table-borderless table-hover text-left">
+            <tbody>
+              <tr>
+                <td class="text-muted">Booking number</td>
+                <td class="font-weight-bold text-right"><%= @booking.id %></td>
+              </tr>
+              <tr>
+                <td class="text-muted">Total price</td>
+                <td class="font-weight-bold text-right"><%= calcule_price(@pet.price, @booking.start_date, @booking.end_date) %> € </td>
+              </tr>
+              <tr>
+                <td class="text-muted">Location</td>
+                <td class="font-weight-bold text-right"><%= @pet.address %></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="booking_show_map">
+            <div
+            id="map"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+            class="booking_show_map"></div>
+        </div>
+
+        <div class="my-5"></div>
+        <%= link_to 'Delete this booking', pet_booking_path(@pet, @booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'mt-5' %>
+    </div>
+
+
+
+    <div class="col-lg-4">
+      <% if @review.id.nil? %>
+        <div class="review_form_on_booking_page">
+          <h3 class="mt-3">Review this booking</h3>
+          <%= simple_form_for [@booking, @review] do |f| %>
+            <%= f.input :content %>
+            <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5] %>
+            <%= f.submit class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="complete_review_on_booking_page">
+          <h3 class="mt-3">Review</h3>
+          <p><%= render 'components/review_star', review: @review %></p>
+          <p><%= @review.content %></p>
         </div>
       <% end %>
 
-      <div class="d-inline-block booking_inner_div"><p>&nbsp&&nbsp</p></div>
 
-
-
-      <%= link_to pet_path(@pet) do%>
-        <div class="d-inline-block user_or_pet_block">
-          <%= cl_image_tag @pet.photo, class: 'avatar-large d-inline-block' %>
-          <p class="d-inline-block"><%= @pet.name %></p>
-        </div>
-      <% end %>
     </div>
   </div>
-
-  <div class="flex-grow-1"></div>
-
-  <div class="flex-shrink-0 d-inline-block booking_dates_div d-flex align-items-center">
-    <h5>Start</h5>
-    <p><%= @booking.start_date.strftime("%B #{@booking.start_date.day.ordinalize}, %Y")%></p>
-    <h5>End</h5>
-    <p><%= @booking.end_date.strftime("%B #{@booking.end_date.day.ordinalize}, %Y") %></p>
-  </div>
-</div>
-
-  <div class="d-flex justify-content-between">
-    <table class="table table-borderless table-hover text-left">
-      <tbody>
-        <tr>
-          <td class="text-muted">Booking number</td>
-          <td class="font-weight-bold text-right"><%= @booking.id %></td>
-        </tr>
-        <tr>
-          <td class="text-muted">Total price</td>
-          <td class="font-weight-bold text-right"><%= calcule_price(@pet.price, @booking.start_date, @booking.end_date) %> € </td>
-        </tr>
-        <tr>
-          <td class="text-muted">Location</td>
-          <td class="font-weight-bold text-right"><%= @pet.address %></td>
-        </tr>
-      </tbody>
-    </table>
-
-  </div>
-
-  <div class="booking_show_map">
-      <div
-      id="map"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      class="booking_show_map"></div>
-  </div>
-
-
-  <div class="my-5"></div>
-  <%= link_to 'Delete this booking', pet_booking_path(@pet, @booking), method: :delete, data: { confirm: "Are you sure?" }, class: 'mt-5' %>
 
 </div>
