@@ -5,7 +5,7 @@
 <div class="container">
   <div class="top-pets">
       <h2 class="card-card_pet_title">
-       TOP 5 OF THIS WEEK
+       Top pets this week:
       </h2>
     <div class="top-pet-row">
       <% @pets.sort_by { |pet| - pet.average_rating }.take(5).each do |pet| %>
