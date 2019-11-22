@@ -7,9 +7,9 @@
       <h2 class="card-card_pet_title">
        Top pets this week:
       </h2>
-    <div class="top-pet-row">
+    <div class="toppetrow">
       <% @pets.sort_by { |pet| - pet.average_rating }.take(5).each do |pet| %>
-        <div class="card card_pet mx-2" id="card-top-3">
+        <div class="card card_pet mx-2 draggable" id="card-top-3" data-id="<%= pet.id %>">
           <%= link_to pet_path(pet) do %>
             <%= cl_image_tag pet.photo, class: "card-img-top pet-img" %>
           <% end %>
@@ -20,10 +20,38 @@
             </div>
           </div>
         </div>
-      <% end %>
+        <div class="modal modal-<%= pet.id %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book quickly! 🐒</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form accept-charset="UTF-8" action="/pets/<%= pet.id %>/bookings" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <input class="form-control string optional datepicker flatpickr-input" type="text" name="booking[start_date]" id="booking_start_date" readonly="readonly">
+          <input class="form-control string optional datepicker flatpickr-input" type="text" name="booking[end_date]" id="booking_end_date" readonly="readonly">
+          <div class="form-actions">
+            <input type="submit" name="commit" value="Book this pet" class="btn btn btn-primary" data-disable-with="Book this pet">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="booking_container">
+    <div class="booking_rectangle">
+      <p>drag card to book</p>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="d-flex">

@@ -19,6 +19,8 @@ class PetsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { pet: pet })
       }
     end
+        @booking = Booking.new
+
   end
 
   def show

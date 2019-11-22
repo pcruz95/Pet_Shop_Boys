@@ -1,0 +1,24 @@
+.booking_container {
+  display: flex;
+  justify-content: center;
+}
+
+.booking_rectangle {
+  border-radius: 6px;
+  width: 100vh;
+  background-color: white;
+  height: 100px;
+  margin-bottom: 100px;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  justify-content: space-around;
+  box-shadow: 0 0 10px rgba(116, 31, 127, 0.23);
+
+  p {
+    display: flex;
+    justify-content: center;
+    padding: 41px;
+    font-family: "Raleway", "Helvetica", "sans-serif";
+    font-weight: bold;
+  }
+}
