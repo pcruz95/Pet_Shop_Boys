@@ -1,17 +1,27 @@
 #home-banner {
-  background-image : asset-url('background-image.jpg');
-  background-size: cover;
-  display: inline-block;
-  vertical-align: bottom;
-  height: calc(100vh);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: flex-end;
+  // vertical-align: bottom;
+  height: 100vh;
   width: 100%;
   top: -56px;
   position: relative;
 }
 
 #home-search {
-  display: inline-flex;
-  position: relative;
-  top: 200px;
-  left: 100px;
+  // display: inline-flex;
+  position: absolute;
+  bottom: 70%;
+  left: 183px;
+}
+
+.home-img {
+  background-image: asset-url('peacock.jpeg');
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  right: 0px;
 }

@@ -37,7 +37,7 @@ puts "making users"
     last_name: Faker::Name.last_name,
     address: addresses.sample,
     description: Faker::Lorem.sentence(word_count: rand(10..40)),
-    photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..4)}.jpg")
+    photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..6)}.jpg")
   )
   [0, 0, 1, 2].sample.times do
     puts "making pet"
@@ -45,7 +45,7 @@ puts "making users"
       user: user,
       name: Faker::Superhero.name,
       description: Faker::Lorem.sentence(word_count: rand(10..40)),
-      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..7)}.jpg"),
+      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..8)}.jpg"),
       address: user.address,
       price: [5, 10, 25, 50].sample,
       animal_type: %w(dog cat sheep unicorn snake lion monkey giraffe).sample
