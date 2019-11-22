@@ -1,1 +1,7 @@
+<div class="container">
+  <% if @query.present? %>
+    <p class="mt-5 text-center"><i class="fas fa-search"></i>   Found <strong><%= @pets.count %></strong> Pets matching your <strong>"<%= @query.upcase %>"</strong> search criteria.</p>
+  <% end %>
+</div>
+
 <%= render 'components/pets_index' %>
