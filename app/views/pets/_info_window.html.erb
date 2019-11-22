@@ -1,2 +1,3 @@
-<h2><%= pet.name %></h2>
+<%= cl_image_tag pet.photo, class: "avatar-square" %>
+<h5><%= link_to pet.name, pet_path(pet) %></h5>
 <p><%= pet.address %></p>
