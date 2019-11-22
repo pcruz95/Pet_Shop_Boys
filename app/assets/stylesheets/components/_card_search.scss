@@ -1,4 +1,8 @@
 .card-search {
   width: 400px;
-  position: absolute;;
+  position: absolute;
+  font-family: $body-font;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  background-color: #574D89;
+  color: white;
 }
