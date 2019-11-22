@@ -32,9 +32,11 @@
       <div class="modal-body">
         <form accept-charset="UTF-8" action="/pets/<%= pet.id %>/bookings" method="post">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <label class="pt-2">Start date</label>
           <input class="form-control string optional datepicker flatpickr-input" type="text" name="booking[start_date]" id="booking_start_date" readonly="readonly">
+          <label class="pt-2">End date</label>
           <input class="form-control string optional datepicker flatpickr-input" type="text" name="booking[end_date]" id="booking_end_date" readonly="readonly">
-          <div class="form-actions">
+          <div class="form-actions pt-3">
             <input type="submit" name="commit" value="Book this pet" class="btn btn btn-primary" data-disable-with="Book this pet">
           </div>
         </form>
