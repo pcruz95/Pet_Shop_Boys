@@ -17,6 +17,8 @@ class PetsController < ApplicationController
         lng: flat.longitude
       }
     end
+        @booking = Booking.new
+
   end
 
   def show
