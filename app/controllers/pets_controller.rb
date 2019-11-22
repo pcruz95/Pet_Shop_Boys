@@ -7,6 +7,7 @@ class PetsController < ApplicationController
     if params[:query].present?
       # @pets = Pet.search_by_address_and_type(params[:query]).joins(:bookings).joins(:reviews).order("reviews.rating")
       @pets = Pet.search_by_address_and_type(params[:query]).sort_by { |pet| - pet.average_rating }
+      @query = params[:query]
     else
       @pets = Pet.all.sort_by { |pet| - pet.average_rating }
     end
