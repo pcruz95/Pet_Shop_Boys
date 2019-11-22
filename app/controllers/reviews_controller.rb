@@ -18,10 +18,18 @@ class ReviewsController < ApplicationController
     # @review = Review.new(review_params)
     # @review.user = current_user
     if @review.save
-      redirect_to pet_booking_path(@booking.pet, @booking)
+      respond_to do |format|
+        format.html { redirect_to pet_booking_path(@booking.pet, @booking) }
+        format.js
+      end
     else
       flash[:error] = "There was an error making your reivew. Please try again!"
-      redirect_to pet_booking_path(@booking.pet, @booking)
+      respond_to do |format|
+        format.html { render 'booking/show' }
+        format.js
+      end
+
+      # redirect_to pet_booking_path(@booking.pet, @booking)
     end
   end
 
