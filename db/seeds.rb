@@ -39,13 +39,13 @@ puts "making users"
     description: Faker::Lorem.sentence(word_count: rand(10..40)),
     photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..6)}.jpg")
   )
-  [0, 0, 1, 2].sample.times do
+  [1, 2, 3].sample.times do
     puts "making pet"
     Pet.create!(
       user: user,
       name: Faker::Superhero.name,
       description: Faker::Lorem.sentence(word_count: rand(10..40)),
-      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..8)}.jpg"),
+      photo: File.new("#{Rails.root}/db/seed_images/animals/#{rand(1..20)}.jpg"),
       address: user.address,
       price: [5, 10, 25, 50].sample,
       animal_type: %w(dog cat sheep unicorn snake lion monkey giraffe).sample
@@ -61,7 +61,7 @@ users = User.all
 date1 = Time.now
 date2 = Time.now + (60 * 60 * 24 * 31)
 
-15.times do
+40.times do
   puts "creating a booking"
   random_start_date = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
   random_end_date = random_start_date + (60 * 60 * 24 * rand(1..10))
@@ -73,7 +73,7 @@ date2 = Time.now + (60 * 60 * 24 * 31)
   )
   puts "creating review"
   Review.create(
-    rating: rand(0..5),
+    rating: rand(3..5),
     content: Faker::Lorem.sentence(word_count: rand(10..40)),
     booking: booking
   )
