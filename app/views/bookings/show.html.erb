@@ -76,7 +76,7 @@
       <% if @review.id.nil? %>
         <div class="review_form_on_booking_page">
           <h3 class="mt-3">Review this booking</h3>
-          <%= simple_form_for [@booking, @review] do |f| %>
+          <%= simple_form_for([@booking, @review], remote: true) do |f| %>
             <%= f.input :content %>
             <%= f.input :rating, collection: [0, 1, 2, 3, 4, 5] %>
             <%= f.submit class: 'btn btn-primary' %>
@@ -84,9 +84,7 @@
         </div>
       <% else %>
         <div class="complete_review_on_booking_page">
-          <h3 class="mt-3">Review</h3>
-          <p><%= render 'components/review_star', review: @review %></p>
-          <p><%= @review.content %></p>
+          <%= render 'components/review_on_booking' %>
         </div>
       <% end %>
 
