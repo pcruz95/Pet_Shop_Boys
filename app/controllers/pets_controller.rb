@@ -11,10 +11,11 @@ class PetsController < ApplicationController
       @pets = Pet.all.sort_by { |pet| - pet.average_rating }
     end
 
-    @markers = @pets.map do |flat|
+    @markers = @pets.map do |pet|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: pet.latitude,
+        lng: pet.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { pet: pet })
       }
     end
   end

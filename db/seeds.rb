@@ -37,7 +37,7 @@ puts "making users"
     last_name: Faker::Name.last_name,
     address: addresses.sample,
     description: Faker::Lorem.sentence(word_count: rand(10..40)),
-    photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..4)}.jpg")
+    photo: File.new("#{Rails.root}/db/seed_images/users/#{rand(1..6)}.jpg")
   )
   [1, 2, 3].sample.times do
     puts "making pet"
