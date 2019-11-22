@@ -27,7 +27,7 @@
 
       <div class="border-bottom my-5"></div>
       <div class="position-sticky-2 pet-booker">
-        <h5>Book <%= @pet.name %></h5>
+        <h3>Book <%= @pet.name %></h3>
         <%= simple_form_for [@pet, @booking] do |f| %>
           <div class="form-inputs">
             <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
